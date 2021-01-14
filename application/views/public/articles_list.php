@@ -1,29 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles List</title>
-    <?= link_tag('assets/css/bootstrap.min.css'); ?>
-</head>
-<body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Articles</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        <div class="ml-2 float-right btn btn-primary">Login</div>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/layout/header.php"); ?>
+    
+    <div class="container mt-5">
+    <?= form_open('Login/adminLogin');?>
+        <div class="form-group row">
+            <?= form_fieldset('Admin Login <i class="fas fa-user-shield"></i>');?>
         </div>
-        </nav>
-    </div>
-    <script src="<?= base_url('assets/jQuery/jquery-3.5.1.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
-</body>
-</html>
+
+        <!-- Username -->
+        <div class="form-group row">    
+            <?= form_label('<i class="fas fa-user"></i> Username', 'username');?>
+            <?php
+                $data = array(
+                    'name'              => 'username',
+                    'id'                => 'username',
+                    'class'             => 'form-control',
+                    'aria-describedby'  => 'usernamehelp',
+                    'placeholder'       => 'Enter Username'
+                );
+                echo form_input($data);
+            ?>
+            <small id="usernamehelp" class="form-text text-muted"><i class="fas fa-quote-left"></i> We will never share your username with anyone else.</small>
+        </div>
+    
+        <!-- Password -->
+        <div class="form-group row">    
+            <?= form_label('<i class="fas fa-lock"></i> Password', 'password');?>
+            <?php
+                $data = array(
+                    'name'              => 'password',
+                    'id'                => 'password',
+                    'class'             => 'form-control',
+                    'placeholder'       => 'Enter Password'
+                );
+                echo form_password($data);
+            ?>
+        </div>
+
+        <!-- Submit & Reset -->
+        <div class="form-group row">
+            <?php
+                $attributes = array(
+                    'name'  => 'submit',
+                    'value' => 'Submit',
+                    'class' => 'btn btn-primary btn-sm',
+                    'id'    => 'btnSubmit'
+                );
+                $attributes2 = array(
+                    'name'  => 'reset',
+                    'value' => 'Reset',
+                    'class' => 'btn btn-secondary btn-sm ml-2',
+                    'id'    => 'btnReset'
+                );
+            ?>
+            <?= form_submit($attributes);?>
+            <?= form_reset($attributes2);?>
+        </div>
+        <?= form_fieldset_close();?>
+    <?php
+        $string = "</div>";
+        echo form_close($string);
+    ?>
+
+<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/layout/footer.php"); ?>
