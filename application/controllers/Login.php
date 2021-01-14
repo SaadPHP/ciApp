@@ -3,7 +3,7 @@
 class Login extends MY_Controller{
 
     public function index(){
-        echo "Login Controller";
+        $this->load->view('public/articles_list');
     }
 
     public function adminLogin(){
