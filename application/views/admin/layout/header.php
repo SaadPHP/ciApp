@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><i class="fas fa-sticky-note"></i> Articles</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-sticky-note"></i> Admin Panel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +22,6 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
             </form>
-        <?= anchor('Login','<i class="fas fa-sign-in-alt"></i> Login','class="ml-2 float-right btn btn-primary"'); ?>
-        <?= anchor('UserRegistration','<i class="fas fa-user-plus"></i> Signup','class="ml-2 float-right btn btn-info"'); ?>
+        <?= anchor('Logout','<i class="fas fa-sign-out-alt"></i> Logout','class="ml-2 float-right btn btn-primary"'); ?>
         </div>
         </nav>
