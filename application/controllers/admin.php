@@ -3,8 +3,9 @@
 class Admin extends MY_Controller{
 
     // Admin controller
-    public function index(){
-        
+    public function __construct(){
+        parent::__construct();
+        !$this->session->userdata('login_id') ? redirect('login') : '';
     }
 
     public function dashboard(){
