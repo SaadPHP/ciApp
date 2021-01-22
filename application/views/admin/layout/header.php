@@ -22,6 +22,6 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
             </form>
-        <?= anchor('Logout','<i class="fas fa-sign-out-alt"></i> Logout','class="ml-2 float-right btn btn-primary"'); ?>
+        <?= anchor('Login/Logout','<i class="fas fa-sign-out-alt"></i> Logout','class="ml-2 float-right btn btn-primary"'); ?>
         </div>
         </nav>

@@ -38,7 +38,7 @@
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="4">No Records Found.</td>
+                        <td colspan="5">No Records Found.</td>
                     </tr>
                 <?php endif; ?>
                 </tbody>
