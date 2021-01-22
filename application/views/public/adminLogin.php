@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/layout/header.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/public/layout/header.php"); ?>
     
     <div class="container mt-5">
     <?= form_open('Login/adminLogin');?>
@@ -80,4 +80,4 @@
         echo form_close($string);
     ?>
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/layout/footer.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/public/layout/footer.php"); ?>
