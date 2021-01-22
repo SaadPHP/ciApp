@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles List</title>
+    <title>Admin Panel</title>
     <?= link_tag('/assets/css/bootstrap.min.css'); ?>
     <?= link_tag('/assets/fontawesome/css/fontawesome.min.css'); ?>
     <?= link_tag('/assets/fontawesome/css/all.min.css'); ?>
@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><i class="fas fa-sticky-note"></i> Admin Panel</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-user-cog"></i> Admin Panel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

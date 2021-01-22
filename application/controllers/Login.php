@@ -32,8 +32,10 @@ class Login extends MY_Controller{
                 $result = $this->loginmodel->authorize($username, $db_password);
                 if($result){
                     // authentication successful
-                    $data['result'] = $result; 
-                    $this->load->view('admin/dashboard',$data);
+                    foreach($result as $row){
+                        $this->session->set_userdata('login_id',$row->id);
+                    }
+                    return redirect('admin/dashboard');
                 }else{
                     // authentication failed
                     $this->load->view('public/adminLogin');

@@ -21,6 +21,11 @@ class Loginmodel extends CI_Model{
         return $q->row('password');
     }
 
+    public function get_details($id){
+        $q = $this->db->where('id', $id)
+                    ->get('users');
+        return $q->result();
+    }
 
 }
 
