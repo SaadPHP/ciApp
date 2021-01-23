@@ -4,3 +4,28 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.highArea{
+    background-color: #482c3d;
+    font-size: 16px;
+}
+
+.disclaimer{
+    background-color: #1d1d1d;
+    font-size: 14px;
+    color: #535353;
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+#icon-1, #icon-2, #icon-3, #icon-4{
+    float: right;
+    font-size: 35px;
+    margin-left: 15px;
+}
+
+.footer{
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+}

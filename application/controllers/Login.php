@@ -3,6 +3,7 @@
 class Login extends MY_Controller{
 
     public function index(){
+        $this->session->userdata('login_id') ? redirect('admin/dashboard') : '';
         $this->load->view('public/adminLogin');
     }
 
@@ -38,13 +39,13 @@ class Login extends MY_Controller{
                     return redirect('admin/dashboard');
                 }else{
                     // authentication failed
+                    $this->session->set_flashdata('login_failed','Invalid Username/Password');
                     $this->load->view('public/adminLogin');
-                    echo "<div class='alert alert-danger'>Incorrect Username/Password</div>";
                 }
             }else{
                 // if the password doesn't match, redirect to login page displaying the error.
+                $this->session->set_flashdata('login_failed','Invalid Username/Password');
                 $this->load->view('public/adminLogin');
-                echo "<div class='alert alert-danger'>Incorrect Username/Password</div>";
             }
             /*
             if($db_password){
