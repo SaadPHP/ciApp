@@ -6,14 +6,14 @@ body{
 }
 
 .highArea{
-    background-color: #482c3d;
+    background-color: #0b1d51;
     font-size: 16px;
 }
 
 .disclaimer{
     background-color: #1d1d1d;
     font-size: 14px;
-    color: #535353;
+    color: #a1a1a1;
     font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -23,9 +23,56 @@ body{
     margin-left: 15px;
 }
 
-.footer{
-    bottom: 0;
+.admin-footer{
+    bottom: -50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.main-content{
+    z-index: 1;
+}
+
+.welcome{
+    background-image: url('img/bck.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.public-header, .admin-header{
+    top: 0;
     position: fixed;
     left: 0;
     width: 100%;
+    z-index: 999;
+}
+
+.table{
+    font-size: 14px;
+}
+
+.foot-start{
+    background-color: #1d1d1d;
+    font-size: 14px;
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    color: #ffffff;
+    align-self: center;
+    box-sizing: border-box;
+}
+
+.foot-start ul{
+    font-weight: 400;
+    text-align: justify;
+}
+
+.foot-start li{
+    list-style: none;
+    margin: 3px;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.foot-start li i{
+    color: #0b1d51;
 }
