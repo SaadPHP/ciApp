@@ -1,17 +1,18 @@
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/admin/layout/header.php");?>
+<br/><br/>
 <?php foreach($result as $row){ ?>
-<div class="container">
+<div class="container main-content">
     <div class="row">
         <div class="col-lg-12">
-            <div class="alert alert-secondary mt-4"><i class="fas fa-home"></i> Welcome, <?= $row->fname." ".$row->lname; ?>!
-            <span class="float-right"><i class="fas fa-calendar"></i> <?= date('l jS \of F Y h:i:s A');?></span></div>
+            <div class="alert alert-secondary mt-4 welcome text-white"><i class="fas fa-home"></i> Welcome, <?= $row->fname." ".$row->lname; ?>!
+            <span class="float-right text-dark"><i class="fas fa-calendar"></i> <?= date('l jS \of F Y h:i:s A');?></span></div>
         </div>
     </div>
-<?php } // endforeach ?>
+    <?php } // endforeach ?>
     <div class="row">
         <div class="col-lg-12 table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped table-bordered">
             <caption>List of Articles</caption>
                 <thead class="small thead-dark">
                     <tr>
@@ -26,7 +27,7 @@
                 <?php if(count($articles)): ?>
                     <?php foreach($articles as $article): ?>
                     <tr>
-                        <td width="5%"><?= $article->id; ?></td>
+                        <td width="8%"><?= $article->id; ?></td>
                         <td width="15%"><?= $article->title; ?></td>
                         <td width="45%"><?= $article->body; ?></td>
                         <td width="20%"><?= $username; // from controller data['username'] ?></td>
@@ -45,7 +46,6 @@
             </table>
         </div>
     </div>
-
 
 </div>
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/admin/layout/footer.php");?>

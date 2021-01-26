@@ -1,5 +1,5 @@
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/public/layout/header.php"); ?>
-
+    <br/><br/>
     <div class="container mt-5">
         <?= form_open('UserRegistration/registerUser'); ?>
         <div class="form-group">

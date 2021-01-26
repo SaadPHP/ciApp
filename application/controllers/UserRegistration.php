@@ -3,6 +3,7 @@
 class UserRegistration extends MY_Controller{
 
     public function index(){
+        $this->session->userdata('login_id') ? redirect('admin/dashboard') : '';
         $this->load->view('public/registration');
     }
 
