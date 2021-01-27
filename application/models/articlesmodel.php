@@ -15,7 +15,14 @@ class Articlesmodel extends CI_Model{
         return $q->row('uname');
     }
 
-
+    public function __storeArticle($title, $body, $author_id){
+        $data = array(
+            'title'     => $title,
+            'body'      => $body,
+            'author_id' => $author_id
+        );
+        return $this->db->insert('articles',$data); // returns affected rows count
+    }
 
 }
 

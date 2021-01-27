@@ -11,16 +11,31 @@
     </div>
     <?php } // endforeach ?>
     <div class="row">
+        <div class="col-lg-12">
+            <?= anchor('admin/add_Article','<i class="fas fa-folder-plus"></i> Add Article','class="btn btn-primary btn-sm float-right mb-3"');?>
+            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard</span>
+            <!-- Setting up article status info (whether it inserted or failed) -->
+            <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
+                <?php $class = $this->session->flashdata('statusClass'); ?>    
+                <span id="article_msg" class="alert alert-dismissible <?= $class; ?> p-2 small">
+                    <button id="article_btn" type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?= $msg; ?>
+                </span>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-lg-12 table-responsive">
-            <table class="table table-hover table-striped table-bordered">
+            <table class="table table-hover table-striped table-bordered text-center table-article">
             <caption>List of Articles</caption>
                 <thead class="small thead-dark">
                     <tr>
-                        <th scope="col">Sr. No</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Body</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Action</th>
+                        <th scope="col"><i class="fas fa-list-ol"></i> Sr. No</th>
+                        <th scope="col"><i class="fas fa-pen"></i> Title</th>
+                        <th scope="col"><i class="fas fa-book-open"></i> Article Description</th>
+                        <th scope="col"><i class="fas fa-user-tie"></i> Author</th>
+                        <th scope="col"><i class="fas fa-tasks"></i> Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,10 +45,10 @@
                         <td width="8%"><?= $article->id; ?></td>
                         <td width="15%"><?= $article->title; ?></td>
                         <td width="45%"><?= $article->body; ?></td>
-                        <td width="20%"><?= $username; // from controller data['username'] ?></td>
-                        <td width="12%">
-                            <button class="btn btn-primary btn-sm">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                        <td width="15%"><?= $username; // from controller data['username'] ?></td>
+                        <td width="22%">
+                            <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
                         </td>
                     </tr>
                     <?php endforeach; ?>

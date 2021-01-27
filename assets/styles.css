@@ -24,7 +24,7 @@ body{
 }
 
 .admin-footer{
-    bottom: -50%;
+    bottom: -80%;
     position: absolute;
     left: 0;
     width: 100%;
@@ -75,4 +75,26 @@ body{
 
 .foot-start li i{
     color: #0b1d51;
+}
+
+#dash{
+    width: 120px!important;
+    display: inline-block;
+}
+
+#article_msg{
+    width: 200px!important;
+    display: inline-block;
+}
+
+#article_btn{
+    top: -7px!important;
+}
+
+.table-article{
+    box-shadow: 0 0 5px #384d48;
+}
+
+.table-article thead{
+    box-shadow: 0 0 6px #384d48;
 }
