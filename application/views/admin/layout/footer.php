@@ -46,6 +46,12 @@
 <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
 <script src="<?= base_url('assets/fontawesome/js/fontawesome.min.js');?>"></script>
 <script src="<?= base_url('assets/fontawesome/js/all.min.js');?>"></script>
+<script src="<?= base_url('assets/jQuery/jquery-te-1.4.0.min.js');?>"></script>
+
+<script>
+    $('textarea').jqte();
+</script>
+
 </div>
 </body>
 </html>

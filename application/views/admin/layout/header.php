@@ -8,6 +8,7 @@
     <?= link_tag('/assets/fontawesome/css/fontawesome.min.css'); ?>
     <?= link_tag('/assets/fontawesome/css/all.min.css'); ?>
     <?= link_tag('/assets/styles.css'); ?>
+    <?= link_tag('/assets/css/jquery-te-1.4.0.css'); ?>
 
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url();?>apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url();?>favicon-32x32.png">

@@ -34,6 +34,18 @@ $config = array(
             'label' => 'Last Name',
             'rules' => 'required|trim|alpha'
         ),
+    ),
+    'add_article' => array(
+        array(
+            'field' => 'title',
+            'label' => 'Add Title',
+            'rules' => 'required|trim|alpha_numeric_spaces'
+        ),
+        array(
+            'field' => 'body',
+            'label' => 'Details',
+            'rules' => 'required|trim|alpha_numeric_spaces'
+        )
     )
 
 );
