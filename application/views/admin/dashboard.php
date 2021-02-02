@@ -1,6 +1,12 @@
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/admin/layout/header.php");?>
 <br/><br/>
+<script>
+    function deleteConfirm(){
+        var res = confirm("Are you sure you want to delete this Article?");
+        return res ? true : false;
+    }
+</script>
 <?php foreach($result as $row){ ?>
 <div class="container main-content">
     <div class="row">
@@ -12,8 +18,16 @@
     <?php } // endforeach ?>
     <div class="row">
         <div class="col-lg-12">
-            <?= anchor('admin/add_Article','<i class="fas fa-folder-plus"></i> Add Article','class="btn btn-primary btn-sm float-right mb-3"');?>
-            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard</span>
+            <?php 
+                $attrAdd = array(
+                    'class'             => 'btn btn-primary btn-sm float-right mb-3',
+                    'data-toggle'       => 'tooltip',
+                    'data-placement'    => 'right',
+                    'title'             => 'Add New Article'
+                );
+            ?>
+            <?= anchor('admin/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
+            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $totalArticles;?> records)</b></span>
             <!-- Setting up article status info (whether it inserted or failed) -->
             <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
                 <?php $class = $this->session->flashdata('statusClass'); ?>    
@@ -50,9 +64,26 @@
                         <td width="15%"><?= $article->title; ?></td>
                         <td width="35%"><?= $article->body; ?></td>
                         <td width="10%"><?= $username; // from controller data['username'] ?></td>
-                        <td width="16%">
-                            <?= anchor("admin/edit_article/$article->id",'<i class="fas fa-edit"></i> Edit',['class'=>'btn btn-warning btn-sm']); ?>
-                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                        <td width="8%">
+                            <?php
+                                $attrEdit = array(
+                                    'class'             => 'btn btn-warning btn-sm',
+                                    'data-toggle'       => 'tooltip',
+                                    'data-placement'    => 'bottom',
+                                    'title'             => 'Edit'
+                                ); 
+                            ?>
+                            <?= anchor("admin/edit_article/$article->id",'<i class="fas fa-edit"></i>', $attrEdit); ?>
+                            <?php 
+                                $attrDel = array(
+                                    'class'             => 'btn btn-danger btn-sm',
+                                    'onClick'           => 'return deleteConfirm();',
+                                    'data-toggle'       => 'tooltip',
+                                    'data-placement'    => 'bottom',
+                                    'title'             => 'Delete'
+                                );
+                            ?>
+                            <?= anchor("admin/delete_article/$article->id",'<i class="fas fa-trash"></i>',$attrDel); ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
