@@ -4,10 +4,10 @@
 <div class="row">
     <div class="col-lg-12 foot-start">
         <div class="container">
-            <div class="col-lg-3 mb-4 mt-5 ml-5">
+            <div class="col-lg-3 mb-2 mt-5 ml-5">
                 <img width="160" src="<?= base_url();?>/apple-touch-icon.png"></img>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 custom-footer-logo">
                 <ul>
                     <i class="fas fa-envelope fa-lg text-primary"></i><li> &nbsp;&nbsp;syedmuhammadsaad@live.com</li><br/>
                     <i class="fas fa-phone-alt fa-lg text-primary"></i><li> &nbsp;&nbsp;+(92) 334-3328732</li><br/>
@@ -15,8 +15,8 @@
                     33, Karachi, Sindh 75330</li>
                 </ul>
             </div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-3"></div>
+            <div class="col-lg-5 map" id="map">
+            </div>
         </div>
     </div>
 </div>
@@ -50,6 +50,33 @@
 
 <script>
     $('textarea').jqte();
+</script>
+
+<script>
+let map;
+
+function initMap() {
+
+    // adding options for map in an object
+    var options = {
+        zoom: 17,
+        center: { lat: 24.944608598317146, lng: 67.1057186094887 } 
+    }
+
+    // calling a map by passing in the options object
+    var map = new google.maps.Map(document.getElementById("map"), options);
+
+    // adding marker
+    var marker = new google.maps.Marker({
+        position: { lat: 24.944608598317146, lng: 67.1057186094887 },
+        map: map
+    });
+
+}
+</script>
+
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QPhxOImPiEZfRkTJuTtW1fWqsxn-MQw&callback=initMap">
 </script>
 
 </div>

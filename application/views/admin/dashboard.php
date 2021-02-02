@@ -31,6 +31,7 @@
             <caption>List of Articles</caption>
                 <thead class="small thead-dark">
                     <tr>
+                        <th scope="col"><i class="fas fa-exclamation"></i> Bulk</th>
                         <th scope="col"><i class="fas fa-list-ol"></i> Sr. No</th>
                         <th scope="col"><i class="fas fa-pen"></i> Title</th>
                         <th scope="col"><i class="fas fa-book-open"></i> Article Description</th>
@@ -42,19 +43,22 @@
                 <?php if(count($articles)): ?>
                     <?php foreach($articles as $article): ?>
                     <tr>
-                        <td width="8%"><?= $article->id; ?></td>
+                        <td width="5%">
+                            <input type="checkbox" name="bulk[]" id="bulkAction" />
+                        </td>
+                        <td width="6%"><?= $article->id; ?></td>
                         <td width="15%"><?= $article->title; ?></td>
-                        <td width="45%"><?= $article->body; ?></td>
-                        <td width="15%"><?= $username; // from controller data['username'] ?></td>
-                        <td width="22%">
-                            <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
+                        <td width="35%"><?= $article->body; ?></td>
+                        <td width="10%"><?= $username; // from controller data['username'] ?></td>
+                        <td width="16%">
+                            <?= anchor("admin/edit_article/$article->id",'<i class="fas fa-edit"></i> Edit',['class'=>'btn btn-warning btn-sm']); ?>
                             <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="5">No Records Found.</td>
+                        <td colspan="6">No Records Found.</td>
                     </tr>
                 <?php endif; ?>
                 </tbody>

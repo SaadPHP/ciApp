@@ -83,7 +83,7 @@ body{
 }
 
 #article_msg{
-    width: 200px!important;
+    width: 250px!important;
     display: inline-block;
 }
 
@@ -97,4 +97,14 @@ body{
 
 .table-article thead{
     box-shadow: 0 0 6px #384d48;
+}
+
+.custom-footer-logo{
+    display: inline-block;
+}
+
+.map{   
+    max-width: 720px!important;
+    height: 150px;
+    display: inline-block;
 }
