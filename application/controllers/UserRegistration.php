@@ -10,7 +10,7 @@ class UserRegistration extends MY_Controller{
     public function registerUser(){
         
         $this->load->library('form_validation');
-        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4">','</div>');
+        $this->form_validation->set_error_delimiters('<div class="error mt-4">','</div>');
 
         if ( $this->form_validation->run('registration') ){
 

@@ -15,6 +15,10 @@
     <link rel="manifest" href="<?= base_url()?>site.webmanifest">
 </head>
 <body>
+    <video playsinline autoplay muted loop>
+        <source src="<?= base_url();?>/assets/vid/vidz.mp4" type="video/mp4">
+    </video>
+    
     <div class="container-fluid">
     <div class="public-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

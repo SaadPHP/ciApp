@@ -24,6 +24,52 @@ class Admin extends MY_Controller{
         //retrieving value from session
         $id = $this->session->userdata('login_id');
 
+        // loading pagination
+        $this->load->library('pagination');
+        $config = array(
+            
+            // base options
+            "base_url"          => base_url('admin/dashboard'),
+            "per_page"          => 5,
+            "total_rows"        => $this->am->__getArticleByUser($id),
+            
+            // first and last
+            "first_link"        => "&larr;First",
+            "last_link"         => "&rarr;Last",
+            
+            // outer body of pagination
+            "full_tag_open"     => "<ul class='pagination'>",
+            "full_tag_close"    => "</ul>",
+            
+            // first tag
+            "first_tag_open"    => "<li class='page-link'>",
+            "first_tag_close"   => "</li>",
+            
+            // last tag
+            "last_tag_open"     => "<li class='page-link'>",
+            "last_tag_close"    => "</li>",
+            
+            // next tag
+            "next_tag_open"     => "<li class='page-link'>",
+            "next_tag_close"    => "</li>",
+            "next_link"         => "Next",
+            
+            // previous tag
+            "prev_tag_open"     => "<li class='page-link'>",
+            "prev_tag_close"    => "</li>",
+            "prev_link"         => "Previous",
+            
+            // numbers tag
+            "num_tag_open"      => "<li class='page-link'>",
+            "num_tag_close"     => "</li>",
+            
+            // current active tag
+            "cur_tag_open"      => "<li class='active page-item'><a class='page-link'>",
+            "cur_tag_close"     => "</a></li>"
+        );
+
+        $this->pagination->initialize($config);
+
         //passing session variable to model function
         $res = $this->lm->get_details($id);
         
@@ -33,7 +79,7 @@ class Admin extends MY_Controller{
             return false;
         }
 
-        $data['articles']       = $this->am->__getArticles();
+        $data['articles']       = $this->am->__getArticles($config['per_page'], $this->uri->segment(3));
         $data['username']       = $this->am->__getUserName($id);
         $data['totalArticles']  = $this->am->__getArticleByUser($id);
 

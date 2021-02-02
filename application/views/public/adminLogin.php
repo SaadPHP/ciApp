@@ -1,8 +1,8 @@
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/public/layout/header.php"); ?>
     <br/><br/>
-    <div class="container mt-5">
+    <div class="container mt-5 login-board">
     <?= form_open('Login/adminLogin');?>
-        <div class="form-group">
+        <div class="form-group first-heading">
             <?= form_fieldset('Admin Login <i class="fas fa-user-shield"></i>');?>
         </div>
 
@@ -21,7 +21,7 @@
         <!-- Username -->
         <div class="form-group">    
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 user-label">
                 <?= form_label('<i class="fas fa-user"></i> Username', 'username');?>
                     <?php
                         $data = array(
@@ -47,7 +47,7 @@
         <!-- Password -->
         <div class="form-group">    
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 password-label">
                     <?= form_label('<i class="fas fa-lock"></i> Password', 'password');?>
                     <?php
                         $data = array(
