@@ -27,8 +27,9 @@ class Admin extends MY_Controller{
 
         // now loading articles model
         $this->load->model('articlesmodel','am');
-        $data['articles'] = $this->am->__getArticles();
-        $data['username'] = $this->am->__getUserName($id);
+        $data['articles']       = $this->am->__getArticles();
+        $data['username']       = $this->am->__getUserName($id);
+        $data['totalArticles']  = $this->am->__getArticleByUser($id);
 
         // passing session user values from db to view & also articles data to view
         $this->load->view('admin/dashboard',$data);
@@ -124,8 +125,20 @@ class Admin extends MY_Controller{
         }
     }
 
-    public function delete_article(){
+    public function delete_article($article_id){
+        
+        $this->load->model('articlesmodel','am');
+        if($this->am->__deleteArticle($article_id)){
+            // data deleted successfully, show flashdata
+            $this->session->set_flashdata('articleStatus','Article deleted successfully');
+            $this->session->set_flashdata('statusClass','alert-success');
+        }else{
+            // data was not deleted, show flashdata
+            $this->session->set_flashdata('articleStatus','Oops..! Something went wrong, please try again!');
+            $this->session->set_flashdata('statusClass','alert-danger');
+        }
 
+        return redirect('admin/dashboard');
     }
 
 }

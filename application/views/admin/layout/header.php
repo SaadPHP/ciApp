@@ -16,6 +16,7 @@
     <link rel="manifest" href="<?= base_url()?>site.webmanifest">
 </head>
 <body>
+    <?php date_default_timezone_set("Asia/Karachi"); ?>
     <div class="container-fluid">
     <div class="admin-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
