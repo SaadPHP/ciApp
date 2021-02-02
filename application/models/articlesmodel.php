@@ -24,6 +24,23 @@ class Articlesmodel extends CI_Model{
         return $this->db->insert('articles',$data); // returns affected rows count
     }
 
+    public function __updateArticle($title, $body, $article_id){
+        
+        $user_id = $this->session->userdata('login_id');
+        $data = array(
+            'title'     => $title,
+            'body'      => $body
+        );
+
+        return $this->db->where('id', $article_id)
+                        ->update('articles', $data);
+    }
+
+    public function __fetchArticleDetails($article_id, $user_id){
+        $q = $this->db->where(['id' => $article_id, 'author_id' => $user_id])
+                        ->get('articles');
+        return $q->row();
+    }
 }
 
 
