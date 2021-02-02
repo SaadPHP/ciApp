@@ -1,14 +1,14 @@
 <?php include($_SERVER['DOCUMENT_ROOT']."/ciApp/application/views/public/layout/header.php"); ?>
     <br/><br/>
-    <div class="container mt-5">
+    <div class="container mt-5 registration-board">
         <?= form_open('UserRegistration/registerUser'); ?>
-        <div class="form-group">
+        <div class="form-group first-heading">
             <?= form_fieldset('User Registration <i class="fas fa-user-plus"></i>');?>
         </div>
 
         <div class="form-group">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 user-label">
                     <?= form_label('<i class="fas fa-user"></i> Your Username','username'); ?>
                     <?php
                         $data = array(
@@ -31,7 +31,7 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 password-label">
                 <?= form_label('<i class="fas fa-lock"></i> Your Password','password'); ?>
                     <?php
                         $data = array(
@@ -51,7 +51,7 @@
         
         <div class="form-group">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 fname-label">
                 <?= form_label('<i class="fas fa-user-edit"></i> Your First Name','firstname'); ?>
                     <?php
                         $data = array(
@@ -72,7 +72,7 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 lname-label">
                 <?= form_label('<i class="fas fa-user-edit"></i> Your Last Name','lastname'); ?>
                     <?php
                         $data = array(

@@ -3,9 +3,10 @@
 class Articlesmodel extends CI_Model{
 
     // returns the complete articles table data of the current login user
-    public function __getArticles(){
+    public function __getArticles($limit, $offset){
         $login_id = $this->session->userdata('login_id');
         $q = $this->db->where('author_id',$login_id)
+                    ->limit($limit, $offset)
                     ->get('articles');
         return $q->result();
     }

@@ -12,7 +12,7 @@ class Login extends MY_Controller{
         $this->load->library('form_validation');
 
         // setting up error style
-        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4"><b>*</b> ','</div>');
+        $this->form_validation->set_error_delimiters('<div class="error mt-4"><b>*</b> ','</div>');
 
         // checking validation by verifying the rules from config/form_validation.php -> $config array
         

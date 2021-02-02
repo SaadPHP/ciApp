@@ -55,12 +55,13 @@
                 </thead>
                 <tbody>
                 <?php if(count($articles)): ?>
+                    <?php $counter = $this->uri->segment(3, 0); ?>
                     <?php foreach($articles as $article): ?>
                     <tr>
                         <td width="5%">
                             <input type="checkbox" name="bulk[]" id="bulkAction" />
                         </td>
-                        <td width="6%"><?= $article->id; ?></td>
+                        <td width="6%"><?= ++$counter; ?></td>
                         <td width="15%"><?= $article->title; ?></td>
                         <td width="35%"><?= $article->body; ?></td>
                         <td width="10%"><?= $username; // from controller data['username'] ?></td>
@@ -94,6 +95,7 @@
                 <?php endif; ?>
                 </tbody>
             </table>
+            <?= $this->pagination->create_links();?>
         </div>
     </div>
 

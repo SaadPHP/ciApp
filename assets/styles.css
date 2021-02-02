@@ -6,7 +6,9 @@ body{
 }
 
 .highArea{
-    background-color: #0b1d51;
+    background-image: url('../assets/img/bck.jpg');
+    background-size: cover;
+    background-position: center;
     font-size: 16px;
 }
 
@@ -24,7 +26,7 @@ body{
 }
 
 .admin-footer{
-    bottom: -80%;
+    bottom: -60%;
     position: absolute;
     left: 0;
     width: 100%;
@@ -46,6 +48,15 @@ body{
     left: 0;
     width: 100%;
     z-index: 999;
+}
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .table{
@@ -107,4 +118,37 @@ body{
     max-width: 720px!important;
     height: 150px;
     display: inline-block;
+}
+
+.login-board{
+    color: #bfc0c0;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .login-board, .registration-board {
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 45px;
+    }
+}
+
+#usernamehelp{
+    color: #caf0f8!important;
+}
+
+.user-label, .password-label, .fname-label, .lname-label{
+    color: #f6f1d1!important;
+}
+
+.first-heading{
+    color: #f7ebe8!important;
+}
+
+.error{
+    color: #8d2d3b!important;
+    background-color: #ffcad4;
+    padding: 10px;
+    width: 500px;
+    border-radius: 5px;
 }
