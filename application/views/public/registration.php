@@ -6,6 +6,7 @@
             <?= form_fieldset('User Registration <i class="fas fa-user-plus"></i>');?>
         </div>
 
+        <!-- Username -->
         <div class="form-group">
             <div class="row">
                 <div class="col-lg-6 user-label">
@@ -29,6 +30,7 @@
             </div>
         </div>
 
+        <!-- Password -->
         <div class="form-group">
             <div class="row">
                 <div class="col-lg-6 password-label">
@@ -49,6 +51,7 @@
             </div>
         </div>
         
+        <!-- First Name -->
         <div class="form-group">
             <div class="row">
                 <div class="col-lg-6 fname-label">
@@ -70,6 +73,7 @@
             </div>
         </div>
 
+        <!-- Last Name -->
         <div class="form-group">
             <div class="row">
                 <div class="col-lg-6 lname-label">
@@ -91,6 +95,24 @@
             </div>
         </div>
 
+        <!-- Dropdown -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-6 fname-label">
+                    <?= form_label('<i class="fas fa-user-edit"></i> Select User Role','roles'); ?>
+                    <select name="roles" class="form-control">
+                        <option value="-1" selected="selected" disabled>-- Select --</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Public</option>
+                    </select>    
+                </div>
+                <div class="col-lg-6">
+                    <?= form_error('roles'); ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit -->
         <div class="form-group">
             <div class="row">
                 <div class="col-lg-6">
