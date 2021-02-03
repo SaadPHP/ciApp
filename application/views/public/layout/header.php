@@ -15,25 +15,36 @@
     <link rel="manifest" href="<?= base_url()?>site.webmanifest">
 </head>
 <body>
-    <video playsinline autoplay muted loop>
-        <source src="<?= base_url();?>/assets/vid/vidz.mp4" type="video/mp4">
-    </video>
-    
+    <div oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+        <video playsinline autoplay muted loop>
+            <source src="<?= base_url();?>/assets/vid/vidz.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        function adminAuth(){
+            var pass = 'admin123';
+            var result = prompt("Please enter password to access Admin section : ");
+            return result == pass ? true : false;
+        }
+    </script>    
     <div class="container-fluid">
     <div class="public-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><i class="fas fa-sticky-note"></i> Articles</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <a class="navbar-brand" href="#"><i class="fas fa-sticky-note"></i> Articles</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary btn-sm my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
-            </form>
-        <?= anchor('Login','<i class="fas fa-sign-in-alt"></i> Login','class="ml-2 float-right btn btn-primary btn-sm"'); ?>
-        <?= anchor('UserRegistration','<i class="fas fa-user-plus"></i> Signup','class="ml-2 float-right btn btn-info btn-sm"'); ?>
-        </div>
-    </div>    
+            <div class="collapse navbar-collapse float-right" id="navbarColor02">
+                <?php 
+                    $attr = array(
+                        'class'     => 'ml-2 btn btn-warning btn-sm',
+                        'onclick'   => 'return adminAuth()'                        
+                    );
+                ?>
+                <?= anchor('AdmLogin','<i class="fas fa-sign-in-alt"></i> Admin Login',$attr); ?>
+                <?= anchor('Login','<i class="fas fa-sign-in-alt"></i> Login','class="ml-2 btn btn-primary btn-sm"'); ?>
+                <?= anchor('UserRegistration','<i class="fas fa-user-plus"></i> Signup','class="ml-2 btn btn-info btn-sm"'); ?>
+            </div>    
         </nav>
+    </div>

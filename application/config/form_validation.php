@@ -34,6 +34,11 @@ $config = array(
             'label' => 'Last Name',
             'rules' => 'required|trim|alpha'
         ),
+        array(
+            'field' => 'roles',
+            'label' => 'User Role',
+            'rules' => 'required'
+        ),
     ),
     'add_article' => array(
         array(

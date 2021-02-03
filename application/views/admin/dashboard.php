@@ -11,7 +11,7 @@
 <div class="container main-content">
     <div class="row">
         <div class="col-lg-12">
-            <div class="alert alert-secondary mt-4 welcome text-white"><i class="fas fa-home"></i> Welcome, <?= $row->fname." ".$row->lname; ?>!
+            <div class="alert alert-secondary mt-4 welcome text-white"><i class="fas fa-home"></i> Welcome, <?= $row->uname; ?>!
             <span class="float-right text-dark"><i class="fas fa-calendar"></i> <?= date('l jS \of F Y h:i:s A');?></span></div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                 );
             ?>
             <?= anchor('admin/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
-            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $totalArticles;?> records)</b></span>
+            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $total_articles;?> records)</b></span>
             <!-- Setting up article status info (whether it inserted or failed) -->
             <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
                 <?php $class = $this->session->flashdata('statusClass'); ?>    
@@ -45,11 +45,11 @@
             <caption>List of Articles</caption>
                 <thead class="small thead-dark">
                     <tr>
-                        <th scope="col"><i class="fas fa-exclamation"></i> Bulk</th>
                         <th scope="col"><i class="fas fa-list-ol"></i> Sr. No</th>
                         <th scope="col"><i class="fas fa-pen"></i> Title</th>
                         <th scope="col"><i class="fas fa-book-open"></i> Article Description</th>
                         <th scope="col"><i class="fas fa-user-tie"></i> Author</th>
+                        <th scope="col"><i class="fas fa-stopwatch"></i> Created On</th>
                         <th scope="col"><i class="fas fa-tasks"></i> Action</th>
                     </tr>
                 </thead>
@@ -58,13 +58,11 @@
                     <?php $counter = $this->uri->segment(3, 0); ?>
                     <?php foreach($articles as $article): ?>
                     <tr>
-                        <td width="5%">
-                            <input type="checkbox" name="bulk[]" id="bulkAction" />
-                        </td>
                         <td width="6%"><?= ++$counter; ?></td>
-                        <td width="15%"><?= $article->title; ?></td>
+                        <td width="12%"><?= $article->title; ?></td>
                         <td width="35%"><?= $article->body; ?></td>
-                        <td width="10%"><?= $username; // from controller data['username'] ?></td>
+                        <td width="8%"><?= $article->uname; ?></td>
+                        <td width="12%"><?= $article->created_on; ?></td>
                         <td width="8%">
                             <?php
                                 $attrEdit = array(

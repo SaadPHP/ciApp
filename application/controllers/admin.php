@@ -31,7 +31,7 @@ class Admin extends MY_Controller{
             // base options
             "base_url"          => base_url('admin/dashboard'),
             "per_page"          => 5,
-            "total_rows"        => $this->am->__getArticleByUser($id),
+            "total_rows"        => $this->am->__countAllArticles(),
             
             // first and last
             "first_link"        => "&larr;First",
@@ -79,9 +79,8 @@ class Admin extends MY_Controller{
             return false;
         }
 
-        $data['articles']       = $this->am->__getArticles($config['per_page'], $this->uri->segment(3));
-        $data['username']       = $this->am->__getUserName($id);
-        $data['totalArticles']  = $this->am->__getArticleByUser($id);
+        $data['total_articles'] = $this->am->__countAllArticles();
+        $data['articles']       = $this->am->__getAllArticles($config['per_page'], $this->uri->segment(3));
 
         // passing session user values from db to view & also articles data to view
         $this->load->view('admin/dashboard',$data);
@@ -95,7 +94,7 @@ class Admin extends MY_Controller{
     // function that insert a single article
     public function store_article(){
         
-        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4"><b>*</b> ','</div>');
+        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4"><b><i class="fas fa-exclamation-circle"></i></b> ','</div>');
         if( $this->form_validation->run('add_article') ){
             // if form validation passes then proceed
             // getting values from form
@@ -131,7 +130,7 @@ class Admin extends MY_Controller{
     // function that updates a single article
     public function update_article($article_id){
 
-        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4"><b>*</b> ','</div>');
+        $this->form_validation->set_error_delimiters('<div class="text-danger mt-4"><b><i class="fas fa-exclamation-circle"></i></b> ','</div>');
         if( $this->form_validation->run('add_article') ){
             // if form validation passes then proceed
             // getting values from form

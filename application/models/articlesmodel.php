@@ -7,6 +7,7 @@ class Articlesmodel extends CI_Model{
         $login_id = $this->session->userdata('login_id');
         $q = $this->db->where('author_id',$login_id)
                     ->limit($limit, $offset)
+                    ->order_by('created_on', 'DESC')
                     ->get('articles');
         return $q->result();
     }
@@ -59,6 +60,23 @@ class Articlesmodel extends CI_Model{
         $q = $this->db->where('author_id', $id)
                 ->count_all_results('articles');
         return $q;
+    }
+
+    // returns total number of articles
+    public function __countAllArticles(){
+        $this->db->join('users','users.id = articles.author_id','inner');
+        $this->db->where('users.is_Active', 1);
+        return $this->db->count_all_results('articles');
+    }
+
+    // returns all Articles
+    public function __getAllArticles($limit, $offset){
+        $q = $this->db->select('*')
+                    ->join('users','users.id = articles.author_id','left')
+                    ->limit($limit, $offset)
+                    ->order_by('articles.created_on', 'DESC')
+                    ->get('articles');
+        return $q->result();
     }
 }
 
