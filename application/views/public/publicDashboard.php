@@ -72,7 +72,7 @@
                                     'title'             => 'Edit'
                                 ); 
                             ?>
-                            <?= anchor("commonUsers/edit_article/$article->id",'<i class="fas fa-edit"></i>', $attrEdit); ?>
+                            <?= anchor("commonUsers/edit_article/$article->art_id",'<i class="fas fa-edit"></i>', $attrEdit); ?>
                             <?php 
                                 $attrDel = array(
                                     'class'             => 'btn btn-danger btn-sm',
@@ -82,7 +82,7 @@
                                     'title'             => 'Delete'
                                 );
                             ?>
-                            <?= anchor("admin/delete_article/$article->id",'<i class="fas fa-trash"></i>',$attrDel); ?>
+                            <?= anchor("admin/delete_article/$article->art_id",'<i class="fas fa-trash"></i>',$attrDel); ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

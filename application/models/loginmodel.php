@@ -27,6 +27,12 @@ class Loginmodel extends CI_Model{
         return $q->result();
     }
 
+    public function check_role($user_id){
+        $q = $this->db->select('role_id')
+                        ->where('id', $user_id)
+                        ->get('users');
+        return $q->row();
+    }
 }
 
 

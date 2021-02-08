@@ -38,20 +38,27 @@ class Articlesmodel extends CI_Model{
             'body'      => $body
         );
 
-        return $this->db->where('id', $article_id)
+        return $this->db->where('art_id', $article_id)
                         ->update('articles', $data);
     }
 
     // returns the information of a single article [ given article id and author id ] 
     public function __fetchArticleDetails($article_id, $user_id){
-        $q = $this->db->where(['id' => $article_id, 'author_id' => $user_id])
+        $q = $this->db->where(['art_id' => $article_id, 'author_id' => $user_id])
+                        ->get('articles');
+        return $q->row();
+    }
+
+    // creating a function for admin to edit specific article created by others or by himself
+    public function __fetchAllArticleDetails($article_id){
+        $q = $this->db->where('art_id', $article_id)
                         ->get('articles');
         return $q->row();
     }
 
     // returns the number of rows affected after deleting a single article
     public function __deleteArticle($article_id){
-        return $this->db->delete('articles',['id'=>$article_id]);
+        return $this->db->delete('articles',['art_id'=>$article_id]);
     }
 
     // returns the number of articles present for currently login member

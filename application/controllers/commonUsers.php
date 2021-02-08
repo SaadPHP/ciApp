@@ -19,7 +19,7 @@ class CommonUsers extends MY_Controller{
     }
 
     // function that loads all the articles on homepage
-    public function publicdashboard(){
+    public function publicDashboard(){
 
         //retrieving value from session
         $id = $this->session->userdata('login_id');
@@ -155,11 +155,9 @@ class CommonUsers extends MY_Controller{
     // function that's created to avoid DRY methodology, will be used when article is created, updated or deleted
     private function _flashAndRedirect($status, $successMsg){
         if( $status ){
-            // data deleted successfully, show flashdata
             $this->session->set_flashdata('articleStatus',$successMsg);
             $this->session->set_flashdata('statusClass','alert-success');
         }else{
-            // data was not deleted, show flashdata
             $this->session->set_flashdata('articleStatus','Oops..! Something went wrong, please try again!');
             $this->session->set_flashdata('statusClass','alert-danger');
         }
