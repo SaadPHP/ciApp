@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <?= form_open("admin/update_article/{$article_details->id}");?>
+    <?= form_open("admin/update_article/{$article_details->art_id}");?>
         <div class="form-group">
             <?= form_fieldset('<i class="fas fa-edit"></i> Edit Article');?>
         </div>

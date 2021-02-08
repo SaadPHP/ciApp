@@ -23,67 +23,72 @@ class Admin extends MY_Controller{
 
         //retrieving value from session
         $id = $this->session->userdata('login_id');
-
-        // loading pagination
-        $this->load->library('pagination');
-        $config = array(
-            
-            // base options
-            "base_url"          => base_url('admin/dashboard'),
-            "per_page"          => 5,
-            "total_rows"        => $this->am->__countAllArticles(),
-            
-            // first and last
-            "first_link"        => "&larr;First",
-            "last_link"         => "&rarr;Last",
-            
-            // outer body of pagination
-            "full_tag_open"     => "<ul class='pagination'>",
-            "full_tag_close"    => "</ul>",
-            
-            // first tag
-            "first_tag_open"    => "<li class='page-link'>",
-            "first_tag_close"   => "</li>",
-            
-            // last tag
-            "last_tag_open"     => "<li class='page-link'>",
-            "last_tag_close"    => "</li>",
-            
-            // next tag
-            "next_tag_open"     => "<li class='page-link'>",
-            "next_tag_close"    => "</li>",
-            "next_link"         => "Next",
-            
-            // previous tag
-            "prev_tag_open"     => "<li class='page-link'>",
-            "prev_tag_close"    => "</li>",
-            "prev_link"         => "Previous",
-            
-            // numbers tag
-            "num_tag_open"      => "<li class='page-link'>",
-            "num_tag_close"     => "</li>",
-            
-            // current active tag
-            "cur_tag_open"      => "<li class='active page-item'><a class='page-link'>",
-            "cur_tag_close"     => "</a></li>"
-        );
-
-        $this->pagination->initialize($config);
-
-        //passing session variable to model function
-        $res = $this->lm->get_details($id);
+        $check_role = $this->lm->check_role($id);
         
-        if($res){
-            $data['result'] = $res;
+        if( $check_role->role_id == 2){
+            return redirect('commonUsers/publicDashboard');
         }else{
-            return false;
+            // loading pagination
+            $this->load->library('pagination');
+            $config = array(
+                
+                // base options
+                "base_url"          => base_url('admin/dashboard'),
+                "per_page"          => 5,
+                "total_rows"        => $this->am->__countAllArticles(),
+                
+                // first and last
+                "first_link"        => "&larr;First",
+                "last_link"         => "&rarr;Last",
+                
+                // outer body of pagination
+                "full_tag_open"     => "<ul class='pagination'>",
+                "full_tag_close"    => "</ul>",
+                
+                // first tag
+                "first_tag_open"    => "<li class='page-link'>",
+                "first_tag_close"   => "</li>",
+                
+                // last tag
+                "last_tag_open"     => "<li class='page-link'>",
+                "last_tag_close"    => "</li>",
+                
+                // next tag
+                "next_tag_open"     => "<li class='page-link'>",
+                "next_tag_close"    => "</li>",
+                "next_link"         => "Next",
+                
+                // previous tag
+                "prev_tag_open"     => "<li class='page-link'>",
+                "prev_tag_close"    => "</li>",
+                "prev_link"         => "Previous",
+                
+                // numbers tag
+                "num_tag_open"      => "<li class='page-link'>",
+                "num_tag_close"     => "</li>",
+                
+                // current active tag
+                "cur_tag_open"      => "<li class='active page-item'><a class='page-link'>",
+                "cur_tag_close"     => "</a></li>"
+            );
+
+            $this->pagination->initialize($config);
+
+            //passing session variable to model function
+            $res = $this->lm->get_details($id);
+            
+            if($res){
+                $data['result'] = $res;
+            }else{
+                return false;
+            }
+
+            $data['total_articles'] = $this->am->__countAllArticles();
+            $data['articles']       = $this->am->__getAllArticles($config['per_page'], $this->uri->segment(3));
+
+            // passing session user values from db to view & also articles data to view
+            $this->load->view('admin/dashboard',$data);
         }
-
-        $data['total_articles'] = $this->am->__countAllArticles();
-        $data['articles']       = $this->am->__getAllArticles($config['per_page'], $this->uri->segment(3));
-
-        // passing session user values from db to view & also articles data to view
-        $this->load->view('admin/dashboard',$data);
     }
 
     // function that returns back to main page
@@ -102,7 +107,7 @@ class Admin extends MY_Controller{
             $body       = $this->input->post('body');
             $author_id  = $this->session->userdata('login_id');
 
-            return $this->_flashAndRedirect($this->am->__storeArticle($title, $body, $author_id), 'Article added successfully');
+            return $this->_flashAndRedirectAdm($this->am->__storeArticle($title, $body, $author_id), 'Article added successfully');
         }else{
             // if validation fails, then reloads the add article page
             $this->load->view('admin/add_Article');
@@ -117,11 +122,8 @@ class Admin extends MY_Controller{
     // function that handles the edit request and start the updates function via view
     public function edit_article($article_id){
 
-        // retrieving session variable
-        $user_id = $this->session->userdata('login_id');
-
         // assigning the value to array fetched from model 
-        $data['article_details'] = $this->am->__fetchArticleDetails($article_id, $user_id);
+        $data['article_details'] = $this->am->__fetchAllArticleDetails($article_id);
         
         // passing an array to view to populate edit form with respective article
         $this->load->view('admin/edit_Article', $data);
@@ -137,7 +139,7 @@ class Admin extends MY_Controller{
             $title = $this->input->post('title');
             $body  = $this->input->post('body');
 
-            return $this->_flashAndRedirect($this->am->__updateArticle($title, $body, $article_id), 'Article updated successfully');
+            return $this->_flashAndRedirectAdm($this->am->__updateArticle($title, $body, $article_id), 'Article updated successfully');
         }else{
             // if validation fails, then reloads the edit article page
             $user_id = $this->session->userdata('login_id');
@@ -148,11 +150,11 @@ class Admin extends MY_Controller{
 
     // function that deletes a single article
     public function delete_article($article_id){    
-        return $this->_flashAndRedirect($this->am->__deleteArticle($article_id),'Article deleted successfully');
+        return $this->_flashAndRedirectAdm($this->am->__deleteArticle($article_id),'Article deleted successfully');
     }
 
     // function that's created to avoid DRY methodology, will be used when article is created, updated or deleted
-    private function _flashAndRedirect($status, $successMsg){
+    private function _flashAndRedirectAdm($status, $successMsg){
         if( $status ){
             // data deleted successfully, show flashdata
             $this->session->set_flashdata('articleStatus',$successMsg);
