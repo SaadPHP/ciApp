@@ -27,8 +27,7 @@
 
         <div class="collapse navbar-collapse" id="navbarColor02">
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary btn-sm my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+                <input class="form-control mr-sm-2" id="search" type="text" placeholder="Search">
             </form>
         <?= anchor('Login/Logout','<i class="fas fa-sign-out-alt"></i> Logout','class="ml-2 float-right btn btn-primary btn-sm"'); ?>
         </div>

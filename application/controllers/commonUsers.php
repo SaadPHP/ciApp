@@ -163,4 +163,14 @@ class CommonUsers extends MY_Controller{
         }
         return redirect('commonUsers/publicDashboard');
     }
+
+    public function searchArticles(){
+        $res = $this->input->post('search_val');
+
+        //retrieving value from session
+        $id = $this->session->userdata('login_id');
+    
+        $data = $this->am->search_posts($res, $id);
+        echo json_encode($data);
+    }
 }
