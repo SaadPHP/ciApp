@@ -85,6 +85,15 @@ class Articlesmodel extends CI_Model{
                     ->get('articles');
         return $q->result();
     }
+
+    // function for getting the results for search
+    public function search_posts($res, $id){
+        $sql = "SELECT `art_id`, `title`, `body`, `author_id`, `created_on` FROM `articles` 
+                           WHERE `author_id` = ".$this->db->escape($id)." AND 
+                           (`title` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!' OR `body` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!')";
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
 }
 
 
