@@ -94,6 +94,14 @@ class Articlesmodel extends CI_Model{
         $q = $this->db->query($sql);
         return $q->result();
     }
+
+    // function for getting the results for search for admin
+    public function search_posts_admin($res){
+        $sql = "SELECT `art_id`, `title`, `body`, `author_id`, `created_on` FROM `articles` 
+                           WHERE (`title` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!' OR `body` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!')";
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
 }
 
 

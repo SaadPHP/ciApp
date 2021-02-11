@@ -28,6 +28,8 @@
             ?>
             <?= anchor('admin/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
             <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $total_articles;?> records)</b></span>
+            <span id="total_search" class="alert alert-primary p-2 small text-center ml-1"></span>
+            
             <!-- Setting up article status info (whether it inserted or failed) -->
             <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
                 <?php $class = $this->session->flashdata('statusClass'); ?>    
@@ -41,7 +43,7 @@
 
     <div class="row">
         <div class="col-lg-12 table-responsive">
-            <table class="table table-hover table-striped table-bordered text-center table-article">
+            <table id="all-data" class="table table-hover table-striped table-bordered text-center table-article">
             <caption>List of Articles</caption>
                 <thead class="small thead-dark">
                     <tr>
@@ -93,7 +95,30 @@
                 <?php endif; ?>
                 </tbody>
             </table>
-            <?= $this->pagination->create_links();?>
+            <div id="pagination">
+                <?= $this->pagination->create_links();?>
+            </div>
+        </div>
+    </div>
+
+    <!-- table for search results -->
+    <div class="row">
+        <div class="col-lg-12 table-responsive">
+            <table id="search_results" class="table table-hover table-striped table-bordered text-center table-article">
+            <caption>Search Results for Articles</caption>
+                <thead class="small thead-dark">
+                    <tr>
+                        <th scope="col"><i class="fas fa-list-ol"></i> Sr. No</th>
+                        <th scope="col"><i class="fas fa-pen"></i> Title</th>
+                        <th scope="col"><i class="fas fa-book-open"></i> Article Description</th>
+                        <th scope="col"><i class="fas fa-user-tie"></i> Author</th>
+                        <th scope="col"><i class="fas fa-stopwatch"></i> Created On</th>
+                        <th scope="col"><i class="fas fa-tasks"></i> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 

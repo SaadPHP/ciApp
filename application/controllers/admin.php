@@ -166,6 +166,14 @@ class Admin extends MY_Controller{
         }
         return redirect('admin/dashboard');
     }
+
+    // function that is used to search via Ajax
+    public function searchArticles(){
+        $res = $this->input->post('search_val');
+    
+        $data = $this->am->search_posts_admin($res);
+        echo json_encode($data);
+    }
 }
 
 

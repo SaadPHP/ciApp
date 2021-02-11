@@ -36,6 +36,7 @@ class AdmLogin extends MY_Controller{
                     if($row->role_id == 1){
                         // continue successful authentication ( 1 is for Admin & 2 is for common public )
                         $this->session->set_userdata('login_id',$row->id);
+                        $this->session->set_userdata('role_id',$row->role_id);
                         return redirect('admin/Dashboard');
                     }else{
                         // redirect to login page with the message that this platform is for common public only (because role id is 1 -> Admin )
@@ -56,6 +57,7 @@ class AdmLogin extends MY_Controller{
 
     public function logout(){
         $this->session->unset_userdata('login_id');
+        $this->session->unset_userdata('role_id');
         $this->session->sess_destroy();
         return redirect('login');
     }

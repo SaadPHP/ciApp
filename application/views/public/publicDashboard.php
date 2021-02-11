@@ -29,6 +29,7 @@
             <?= anchor('commonUsers/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
             <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $totalArticles;?> records)</b></span>
             <span id="total_search" class="alert alert-primary p-2 small text-center ml-1"></span>
+            
             <!-- Setting up article status info (whether it inserted or failed) -->
             <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
                 <?php $class = $this->session->flashdata('statusClass'); ?>    

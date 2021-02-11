@@ -20,7 +20,8 @@
     <div class="container-fluid">
     <div class="admin-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><i class="fas fa-user-cog"></i> Admin Panel</a>
+        <?php $role_id = $this->session->userdata('role_id'); ?>
+        <a class="navbar-brand" href="#"><i class="fas fa-user-cog"></i> <?php echo $role_id == 2 ? "User's Panel" : "Admin Panel"; ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
