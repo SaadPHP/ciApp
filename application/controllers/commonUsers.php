@@ -164,6 +164,7 @@ class CommonUsers extends MY_Controller{
         return redirect('commonUsers/publicDashboard');
     }
 
+    // function that is used to search via Ajax
     public function searchArticles(){
         $res = $this->input->post('search_val');
 

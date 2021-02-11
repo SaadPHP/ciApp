@@ -94,15 +94,6 @@ class Articlesmodel extends CI_Model{
         $q = $this->db->query($sql);
         return $q->result();
     }
-
-    // function that returns the total number of rows returned from search
-    public function search_posts_count($res, $id){
-        $sql = "SELECT COUNT(*) as `Total` FROM `articles` 
-                           WHERE `author_id` = ".$this->db->escape($id)." AND 
-                           (`title` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!' OR `body` LIKE '%".$this->db->escape_like_str($res)."%' ESCAPE '!')";
-        $q = $this->db->query($sql);
-        return $q->result();
-    }
 }
 
 
