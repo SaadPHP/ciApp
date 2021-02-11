@@ -108,14 +108,14 @@ function initMap() {
                     var notFound = "<tr><td colspan='6'>No Records Found.</td></tr>";
                     if( data[0] == null ){
                         $("#search_results tbody").append(notFound);
-                        $("#total_search").html("<i class='fas fa-check'></i> Search Result : <b>0</b> record(s)").show();
+                        $("#total_search").html("<i class='fas fa-search'></i> Search Result : <b>0</b> record(s)").show();
                     }else{
                         data.forEach(function(entry){
                             $("#search_results tbody").append("<tr><td width='6%'>" + count + "</td><td width='12%'>" + entry.title + "</td><td width='35%'>" + entry.body + "</td><td width='8%'>" + entry.author_id + "</td><td width='12%'>" + entry.created_on + "</td><td width='8%'><a href='<?= $this->session->userdata('role_id') == 2 ? '../commonUsers/edit_article/' : '../admin/edit_article/'; ?>" + entry.art_id + "' class='btn btn-warning btn-sm'><i class='fas fa-edit'></i></a><a href='<?= $this->session->userdata('role_id') == 2 ? '../commonUsers/delete_article/' : '../admin/delete_article/'; ?>" + entry.art_id + "' class='btn btn-sm ml-1 btn-danger' onclick='return deleteConfirm();'><i class='fas fa-trash'></i></a></td></tr>");
                             total = count;
                             count++;
                         });
-                        $("#total_search").html("<i class='fas fa-check'></i> Search Result : <b>"+ total + "</b> record(s)").show();
+                        $("#total_search").html("<i class='fas fa-search'></i> Search Result : <b>"+ total + "</b> record(s)").show();
                     }
                 }
             });

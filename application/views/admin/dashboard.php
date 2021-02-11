@@ -12,12 +12,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="alert alert-secondary mt-4 welcome text-white"><i class="fas fa-home"></i> Welcome, <?= $row->uname; ?>!
-            <span class="float-right text-dark"><i class="fas fa-calendar"></i> <?= date('l jS \of F Y h:i:s A');?></span></div>
+                <span class="text-dark float-right"><i class="fas fa-calendar"></i> <?= date('l jS \of F Y h:i:s A');?></span>
+            </div>
         </div>
     </div>
     <?php } // endforeach ?>
     <div class="row">
-        <div class="col-lg-12">
             <?php 
                 $attrAdd = array(
                     'class'             => 'btn btn-primary btn-sm float-right mb-3',
@@ -26,19 +26,30 @@
                     'title'             => 'Add New Article'
                 );
             ?>
-            <?= anchor('admin/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
-            <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $total_articles;?> records)</b></span>
-            <span id="total_search" class="alert alert-primary p-2 small text-center ml-1"></span>
             
-            <!-- Setting up article status info (whether it inserted or failed) -->
-            <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
-                <?php $class = $this->session->flashdata('statusClass'); ?>    
-                <span id="article_msg" class="alert alert-dismissible <?= $class; ?> p-2 small">
-                    <button id="article_btn" type="button" class="close" data-dismiss="alert">&times;</button>
-                    <?= $msg; ?>
-                </span>
-            <?php endif; ?>
-        </div>
+            <!-- shows the total number of records -->
+            <div class="col-lg-3">
+                <span id="dash" class="alert alert-dark p-2 small text-center mr-1"><i class="fas fa-tachometer-alt"></i> Dashboard <b>(<?= $total_articles;?> records)</b></span>
+            </div>
+
+            <!-- shows only when the ajax search is used -->
+            <div class="col-lg-7">
+                <span id="total_search" style="display: inline-block!important" class="alert alert-primary p-2 small ml-1 text-center"></span>
+
+                <!-- Setting up article status info (whether it inserted or failed) -->
+                <?php if( $msg = $this->session->flashdata('articleStatus')): ?>
+                    <?php $class = $this->session->flashdata('statusClass'); ?>    
+                    <span id="article_msg" class="alert alert-dismissible <?= $class; ?> p-2 small">
+                        <button id="article_btn" type="button" class="close" data-dismiss="alert">&times;</button>
+                        <i class="fas fa-check"></i> <?= $msg; ?>
+                    </span>
+                <?php endif; ?>
+            </div>
+
+            <!-- Add Button on main screen -->
+            <div class="col-lg-2 float-right">
+               <?= anchor('admin/add_Article','<i class="fas fa-plus"></i> Add',$attrAdd);?>
+            </div>
     </div>
 
     <div class="row">
