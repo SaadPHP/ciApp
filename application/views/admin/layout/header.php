@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title><?= $this->session->userdata('role_id') == 2 ? 'User\'s Panel - ciApp' : 'Admin Panel - ciApp' ;?></title>
     <?= link_tag('/assets/css/bootstrap.min.css'); ?>
     <?= link_tag('/assets/fontawesome/css/fontawesome.min.css'); ?>
     <?= link_tag('/assets/fontawesome/css/all.min.css'); ?>
